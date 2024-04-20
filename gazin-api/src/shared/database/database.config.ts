@@ -1,3 +1,4 @@
+import { Developer } from '@/modules/developer/entities/developer.entity';
 import { Level } from '@/modules/level/entities/level.entity';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
@@ -14,7 +15,7 @@ export class DatabaseConfig {
           : false,
       useUTC: true,
       type: 'postgres',
-      entities: [Level],
+      entities: [Level, Developer],
       synchronize: true,
       logging: false,
       migrationsRun: false,

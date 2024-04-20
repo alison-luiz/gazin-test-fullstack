@@ -17,7 +17,13 @@ export class DeleteLevelService {
   async execute(id: number): Promise<void> {
     const level = await this.findLevelService.findOne(id);
 
-    // retornar erro se tiver algum dev associado ao nivel
+    if (level.developers.length) {
+      throw new AppError({
+        id: 'LEVEL_HAS_DEVELOPERS',
+        status: HttpStatus.BAD_REQUEST,
+        message: 'Level has developers associated.',
+      });
+    }
 
     try {
       await this.levelRepository.remove(level);

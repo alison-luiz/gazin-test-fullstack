@@ -5,31 +5,32 @@ import { MAIN_DB } from '@/shared/utils/constants';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Level } from '../entities/level.entity';
+import { Developer } from '../entities/developer.entity';
+
 
 @Injectable()
-export class FindLevelService {
+export class FindDeveloperService {
   constructor(
-    @InjectRepository(Level, MAIN_DB)
-    private readonly levelRepository: Repository<Level>,
+    @InjectRepository(Developer, MAIN_DB)
+    private readonly developerRepository: Repository<Developer>,
   ) {}
-  
+
   async findAll(
     query: QueryTemplateDto,
-  ): Promise<PaginationTemplate<Level>> {
+  ): Promise<PaginationTemplate<Developer>> {
     const { page = 1, limit = 10, search } = query;
 
-    const [data, total] = await this.levelRepository.findAndCount({
-      where: search ? { nivel: search } : {},
+    const [data, total] = await this.developerRepository.findAndCount({
+      where: search ? { nome: search } : {},
       take: limit,
       skip: (page - 1) * limit,
     });
 
     if (!data.length) {
       throw new AppError({
-        id: 'LEVELS_NOT_FOUND',
+        id: 'DEVELOPERS_NOT_FOUND',
         status: HttpStatus.NOT_FOUND,
-        message: 'Levels not found.',
+        message: 'Developers not found.',
       })
     }
 
@@ -46,20 +47,20 @@ export class FindLevelService {
     };
   }
 
-  async findOne(id: number): Promise<Level> {
-    const level = await this.levelRepository.findOne({
+  async findOne(id: number): Promise<Developer> {
+    const developer = await this.developerRepository.findOne({
       where: { id },
-      relations: ['developers'],
+      relations: ['level'],
     });
 
-    if (!level) {
+    if (!developer) {
       throw new AppError({
-        id: 'LEVEL_NOT_FOUND',
+        id: 'DEVELOPER_NOT_FOUND',
         status: HttpStatus.NOT_FOUND,
-        message: 'Level not found.',
+        message: 'Developer not found.',
       });
     }
 
-    return level;
+    return developer;
   }
 }
