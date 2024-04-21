@@ -22,6 +22,8 @@ export class FindDeveloperService {
 
     const [data, total] = await this.developerRepository.findAndCount({
       where: search ? { nome: search } : {},
+      relations: ['level'],
+      order: { id: 'ASC' },
       take: limit,
       skip: (page - 1) * limit,
     });

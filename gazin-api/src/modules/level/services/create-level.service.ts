@@ -14,6 +14,15 @@ export class CreateLevelService {
   ) {}
   
   async execute(createLevelDto: CreateLevelDto): Promise<Level> {
+
+    if (!createLevelDto.nivel || createLevelDto.nivel === '') {
+      throw new AppError({
+        id: 'ERROR_CREATE_LEVEL',
+        status: HttpStatus.BAD_REQUEST,
+        message: 'Level name is required.',
+      })
+    }
+
     const level = this.levelRepository.create(createLevelDto);
 
     try {

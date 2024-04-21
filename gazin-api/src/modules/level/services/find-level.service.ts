@@ -21,6 +21,7 @@ export class FindLevelService {
 
     const [data, total] = await this.levelRepository.findAndCount({
       where: search ? { nivel: search } : {},
+      relations: ['developers'],
       take: limit,
       skip: (page - 1) * limit,
     });

@@ -22,13 +22,21 @@ export class DeveloperController {
     return this.findDeveloperService.findAll(query)
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.findDeveloperService.findOne(+id)
+  }
+
   @Post()
   create(@Body() createDeveloperDto: CreateDeveloperDto) {
     return this.createDeveloperService.excute(createDeveloperDto)
   }
 
   @Put(':id')
-  update(@Body() updateDeveloperDto: UpdateDeveloperDto, @Param('id') id: string) {
+  update(
+    @Body() updateDeveloperDto: UpdateDeveloperDto,
+    @Param('id') id: string
+  ) {
     return this.updateDeveloperService.excute(+id, updateDeveloperDto)
   }
 
