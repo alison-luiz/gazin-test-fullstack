@@ -14,10 +14,10 @@ Tecnologias utilizadas neste projeto:
 
 [PostgreSQL](https://www.postgresql.org/) 
 
-
 ## Iniciando o projeto 🚩
 
 #### Caso escolha a opção de rodar o projeto local
+
 ```bash
 $ git clone https://github.com/alison-luiz/gazin-test-fullstack
 ```
@@ -39,14 +39,19 @@ Copiar o arquivo .env.example para .env
 $ yarn
 $ yarn start:dev
 ```
+
 **Frontend 🎨**
+
 ```bash
 $ yarn
 $ yarn start
 ```
+
 ## Testes 🧪
+
 Para rodar a série de testes feitos no backend, você pode digitar o comando abaixo.
 (Entrar na pasta gazin-api antes de executar o comando no terminal)
+
 ```bash
 $ yarn test
 ```
@@ -58,7 +63,6 @@ Foi disponibilizado os arquivos de environment e collection da ferramenta [postm
 [Collection](https://github.com/alison-luiz/gazin-test-fullstack/blob/main/Gazin%20Test%20FullStack.postman_collection.json)
 
 [Environment](https://github.com/alison-luiz/gazin-test-fullstack/blob/main/Gazin%20Test%20FullStack.postman_environment.json)
-
 
 ## Build de Produção 🌎
 
