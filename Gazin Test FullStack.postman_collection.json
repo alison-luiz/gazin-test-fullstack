@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "474cbd1c-d8a2-45d5-afa5-f76b6319889b",
+		"name": "Gazin Test FullStack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27403992"
+	},
+	"item": [
+		{
+			"name": "Níveis",
+			"item": [
+				{
+					"name": "Listar Níveis",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/niveis?page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"niveis"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Nível ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/niveis/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"niveis",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar novo Nível",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nivel\": \"Nome do Nível\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/niveis",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"niveis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Nível",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nivel\": \"Novo Nome do Nível\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/niveis/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"niveis",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Nível",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/niveis/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"niveis",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Desenvolvedores",
+			"item": [
+				{
+					"name": "Listar Devs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/desenvolvedores?page=1&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"desenvolvedores"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "Alison",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Dev ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/desenvolvedores/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"desenvolvedores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar novo Dev",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Nome do Desenvolvedor\",\r\n    \"sexo\": \"M\",\r\n    \"datanascimento\": \"1998-06-24\",\r\n    \"hobby\": \"Programação\",\r\n    \"nivelId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/desenvolvedores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"desenvolvedores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Dev",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Novo Nome do Desenvolvedor\",\r\n    \"sexo\": \"M\",\r\n    \"datanascimento\": \"1998-06-24\",\r\n    \"hobby\": \"Jogos\",\r\n    \"nivelId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/desenvolvedores/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"desenvolvedores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Dev",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/desenvolvedores/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"desenvolvedores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
