@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  gazin-api:
+    container_name: "gazin-api"
+    build:
+      context: .
+      dockerfile: ./gazin-api/Dockerfile
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "3001:3001"
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=gazin
+      - POSTGRES_PASSWORD=gazin
+      - POSTGRES_DB=gazin
+  db:
+    container_name: "gazin-db"
+    image: "postgres:16.2-alpine"
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=gazin
+      - POSTGRES_PASSWORD=gazin
+      - POSTGRES_DB=gazin
+  gazin-frontend:
+    container_name: "gazin-frontend"
+    build:
+      context: .
+      dockerfile: ./gazin-frontend/Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
