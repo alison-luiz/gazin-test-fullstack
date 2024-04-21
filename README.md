@@ -32,6 +32,9 @@ $ docker compose up -d
 #### 2. Usar o gerenciador de pacotes [Yarn](https://yarnpkg.com/) para executar o backend e frontend em modo de desenvolvimento
 
 **Backend 🌐**
+
+Copiar o arquivo .env.example para .env
+
 ```bash
 $ yarn
 $ yarn start:dev
