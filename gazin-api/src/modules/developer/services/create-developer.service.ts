@@ -16,7 +16,7 @@ export class CreateDeveloperService {
     private readonly findLevelService: FindLevelService,
   ) {}
 
-  async excute(createDeveloperDto: CreateDeveloperDto): Promise<Developer> {
+  async execute(createDeveloperDto: CreateDeveloperDto): Promise<Developer> {
     await this.findLevelService.findOne(createDeveloperDto.nivelId);
 
     const developer = this.developerRepository.create(createDeveloperDto);

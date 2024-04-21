@@ -29,7 +29,7 @@ export class DeveloperController {
 
   @Post()
   create(@Body() createDeveloperDto: CreateDeveloperDto) {
-    return this.createDeveloperService.excute(createDeveloperDto)
+    return this.createDeveloperService.execute(createDeveloperDto)
   }
 
   @Put(':id')
@@ -37,7 +37,7 @@ export class DeveloperController {
     @Body() updateDeveloperDto: UpdateDeveloperDto,
     @Param('id') id: string
   ) {
-    return this.updateDeveloperService.excute(+id, updateDeveloperDto)
+    return this.updateDeveloperService.execute(+id, updateDeveloperDto)
   }
 
   @Delete(':id')

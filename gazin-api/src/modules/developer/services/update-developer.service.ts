@@ -18,7 +18,7 @@ export class UpdateDeveloperService {
     private readonly findLevelService: FindLevelService,
   ) {}
 
-  async excute(id: number, updateDeveloperDto: UpdateDeveloperDto): Promise<Developer> {
+  async execute(id: number, updateDeveloperDto: UpdateDeveloperDto): Promise<Developer> {
     await this.findDeveloperService.findOne(id);
     await this.findLevelService.findOne(updateDeveloperDto.nivelId);
 
