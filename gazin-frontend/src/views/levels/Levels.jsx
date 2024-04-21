@@ -155,9 +155,8 @@ export default function Levels() {
       <Table striped highlightOnHover withBorder withColumnBorders>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nível</th>
-            <th>Qtde. de Desenvolvedores</th>
+            <th>Nome do Nível</th>
+            <th>Qtde. de Desenvolvedores Vinculados</th>
             <th></th>
             <th></th>
           </tr>
@@ -166,7 +165,6 @@ export default function Levels() {
           {levels.map((level) => {
             return (
               <tr key={level.id}>
-                <td>{level.id}</td>
                 <td>{level.nivel}</td>
                 <td>{level.developers.length}</td>
                 <td style={{ textAlign: "center" }}>

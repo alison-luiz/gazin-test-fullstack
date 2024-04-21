@@ -168,9 +168,8 @@ export default function Developers() {
       <Table striped highlightOnHover withBorder withColumnBorders>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Nome do Desenvolvedor</th>
-            <th>Nível</th>
+            <th>Nível do Desenvolvedor</th>
             <th>Sexo</th>
             <th>Data de Nascimento</th>
             <th>Idade</th>
@@ -183,7 +182,6 @@ export default function Developers() {
           {developers.map((developer) => {
             return (
               <tr key={developer.id}>
-                <td>{developer.id}</td>
                 <td>{developer.nome}</td>
                 <td>{developer.level.nivel}</td>
                 <td>{developer.sexo}</td>
