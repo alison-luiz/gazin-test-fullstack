@@ -53,6 +53,7 @@ $ yarn test
 Foi disponibilizado os arquivos de environment e collection da ferramenta [postman](https://www.postman.com/) contendo todos os endpoints feitos neste projeto.
 
 [Collection](https://github.com/alison-luiz/gazin-test-fullstack/blob/main/Gazin%20Test%20FullStack.postman_collection.json)
+
 [Environment](https://github.com/alison-luiz/gazin-test-fullstack/blob/main/Gazin%20Test%20FullStack.postman_environment.json)
 
 
