@@ -9,6 +9,11 @@ export const fetchFromApi = async (endpoint) => {
   return data;
 };
 
+export const fetchFromApiWithSearch = async (endpoint, searchQuery) => {
+  const { data } = await api.get(`${endpoint}?search=${searchQuery}`);
+  return data;
+};
+
 export const fetchFromApiById = async (endpoint) => {
   const { data } = await api.get(endpoint);
   return data;

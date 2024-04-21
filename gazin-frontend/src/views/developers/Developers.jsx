@@ -5,21 +5,28 @@ import {
   Notification,
   Table,
   Title,
+  TextInput,
 } from "@mantine/core";
 import { useTimeout } from "@mantine/hooks";
 import { IconCheck, IconEdit, IconTrashX, IconX } from "@tabler/icons-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ApplicationState from "../../state/ApplicationState";
-import { fetchFromApi, deleteFromApi } from "../../services/apiRequests";
+import {
+  fetchFromApi,
+  deleteFromApi,
+  fetchFromApiWithSearch,
+} from "../../services/apiRequests";
 
 export default function Developers() {
   const { developers, setDevelopers } = useContext(ApplicationState);
+  const [searchQuery, setSearchQuery] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [isFail, setIsFail] = useState(false);
   const [page, setPage] = useState(1);
   const [perPage] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
+  const [showClearButton, setShowClearButton] = useState(false);
 
   const { start } = useTimeout(() => {
     setIsSuccess(false);
@@ -69,6 +76,26 @@ export default function Developers() {
     setPage(newPage);
   };
 
+  const handleSearch = async () => {
+    try {
+      const response = await fetchFromApiWithSearch(
+        "/desenvolvedores",
+        searchQuery
+      );
+      setDevelopers(response.data);
+      setTotalPages(response.meta.last_page);
+      setShowClearButton(true);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setShowClearButton(false);
+    getDevelopers();
+  };
+
   const renderPaginationButtons = () => {
     const buttons = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -94,6 +121,25 @@ export default function Developers() {
           {" "}
           Incluir Desenvolvedor{" "}
         </Button>
+      </Flex>
+      <Flex mb={"16px"}>
+        <TextInput
+          mr={"16px"}
+          placeholder="Buscar desenvolvedor"
+          value={searchQuery}
+          onChange={(event) => {
+            setSearchQuery(event.target.value);
+            setShowClearButton(event.target.value.length > 0);
+          }}
+        />
+        <Button mr={"8px"} onClick={handleSearch}>
+          Buscar
+        </Button>
+        {showClearButton && (
+          <Button onClick={handleClearSearch} color="red">
+            Limpar
+          </Button>
+        )}
       </Flex>
       {isSuccess && (
         <Notification

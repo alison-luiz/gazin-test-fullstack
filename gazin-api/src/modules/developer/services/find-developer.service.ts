@@ -4,9 +4,8 @@ import { AppError } from '@/shared/utils/appError.exception';
 import { MAIN_DB } from '@/shared/utils/constants';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { Developer } from '../entities/developer.entity';
-
 
 @Injectable()
 export class FindDeveloperService {
@@ -21,7 +20,7 @@ export class FindDeveloperService {
     const { page = 1, limit = 10, search } = query;
 
     const [data, total] = await this.developerRepository.findAndCount({
-      where: search ? { nome: search } : {},
+      where: search ? { nome: Like(`%${search}%`) } : {},
       relations: ['level'],
       order: { id: 'ASC' },
       take: limit,

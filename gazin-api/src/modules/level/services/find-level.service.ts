@@ -4,7 +4,7 @@ import { AppError } from '@/shared/utils/appError.exception';
 import { MAIN_DB } from '@/shared/utils/constants';
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { Level } from '../entities/level.entity';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class FindLevelService {
     const { page = 1, limit = 10, search } = query;
 
     const [data, total] = await this.levelRepository.findAndCount({
-      where: search ? { nivel: search } : {},
+      where: search ? { nivel: Like(`%${search}%`) } : {},
       relations: ['developers'],
       take: limit,
       skip: (page - 1) * limit,
